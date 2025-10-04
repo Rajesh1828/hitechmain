@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+
+
+.primary-color{
+    color: #FF3F33;
+}
+.secondary-color{
+    color: #FFD95F;
+}
+.third-color{
+    color: #4300FF;
+}
+.fourth-color{
+    color: #FFFFFF;
+}
+.fifth-color{
+    color: #000000;
+}
+body{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    overflow-x: hidden;
+    text-transform: capitalize ;
+}
+
+  
+.cor{
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+
+.mon{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.dan {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+
+}
+
+ .scroll-over{
+  overflow-x: scroll;
+  
+ }
+
+ .scroll-over::-webkit-scrollbar{
+  display: none;
+ }
+
+
+
+ @keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.animate-shine {
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.animate-shine {
+  animation: shine 2s linear infinite;
+}

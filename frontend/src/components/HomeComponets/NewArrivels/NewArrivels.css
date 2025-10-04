@@ -1,0 +1,88 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-left{
+  0%{
+    transform: translate(-50%);
+
+  }
+  100%{
+    transform: translate((0%));
+  }
+}
+.animate-scroll-left {
+  animation: scroll-left 50s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-scroll-left:hover{
+  animation-play-state: paused;
+}
+.animate-scroll {
+  animation: scroll 50s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+    
+.animate-scroll:hover{
+  animation-play-state: paused;
+}
+
+ .airing-bubbles {
+  background-image: 
+    radial-gradient(
+      circle at red 15%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 16.667%,
+      transparent 17%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 25% 15%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 16.667%,
+      transparent 17%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 16.667%,
+      transparent 17%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 16.667%,
+      transparent 17%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 25% 85%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 16.667%,
+      transparent 17%,
+      transparent 100%
+    );
+} 
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.1);
+    opacity: 0;
+  }
+}

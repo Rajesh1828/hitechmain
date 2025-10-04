@@ -1,0 +1,6 @@
+.gradient-text {
+    background: url("../../../assets/ab_b.jpg");
+    background-size: cover;
+    background-clip: text; 
+    color: transparent;    
+}
