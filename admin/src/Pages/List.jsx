@@ -11,7 +11,7 @@ const List = ({ token }) => {
     try {
       setLoading(true); 
       const response = await fetch(
-        'https://hslbackend-5.onrender.com/api/product/list',
+        `${backend_url}/api/products/list`,
         {
           method: 'GET',
           headers: {
@@ -34,7 +34,7 @@ const List = ({ token }) => {
     try {
       setLoading(true);
       const response = await axios.delete(
-        `${backend_url}/api/product/delete/${id}`,
+        `${backend_url}/api/products/delete/${id}`,
         { headers: { token } }
       );
 
@@ -77,7 +77,7 @@ const List = ({ token }) => {
         <b>Name</b>
         <b>Category</b>
         <b>Price</b>
-        <b>Code</b>
+        <b>Model</b>
         <b>Brand</b>
         <b>Features</b>
         <b className="text-red-500">Action</b>
@@ -101,7 +101,7 @@ const List = ({ token }) => {
             <p>{item.name}</p>
             <p className="hidden md:block">{item.category}</p>
             <p>₹{item.price}</p>
-            <p className="hidden md:block">{item.code}</p>
+            <p className="hidden md:block">{item.model}</p>
             <p className="hidden md:block">{item.brand}</p>
             <p className="hidden sm:block">{item.features}</p>
             <p

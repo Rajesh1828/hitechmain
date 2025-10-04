@@ -5,15 +5,16 @@ import { backend_url } from '../App';
 import { toast } from 'react-toastify';
 
 const Add = ({ token }) => {
-  const [image, setImage] = useState(false);
-  const [image1, setImage1] = useState([]);
+  const [image1, setImage1] = useState(false);
+  const [image2, setImage2] = useState(false);
+  const [image3, setImage3] = useState(false);
+  const [image4, setImage4] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [mrp, setMrp] = useState("");
   const [sizes, setSizes] = useState([]);
   const [material, setMaterial] = useState("");
-  const [code, setCode] = useState("");
   const [model, setModel] = useState("");
   const [category, setCategory] = useState("certificate");
   const [brand, setBrand] = useState("");
@@ -26,36 +27,40 @@ const Add = ({ token }) => {
 
     try {
       const formData = new FormData();
-      formData.append("images", image); // <-- changed from "images" to "file" to match backend
       formData.append("name", name);
       formData.append("description", description);
       formData.append("price", price);
-      // formData.append("mrp", mrp); // ALWAYS append
+      formData.append("mrp", mrp);
       formData.append("sizes", JSON.stringify(sizes));
       formData.append("material", material);
-      formData.append("code", code);
       formData.append("model", model);
       formData.append("category", category);
       formData.append("brand", brand);
       formData.append("features", features);
+      if (image1) formData.append("image1", image1);
+      if (image2) formData.append("image2", image2);
+      if (image3) formData.append("image3", image3);
+      if (image4) formData.append("image4", image4);
 
       const response = await axios.post(
-        backend_url + "/api/product/add",
+        backend_url + "/api/products/add",
         formData,
         { headers: { token } }
       );
 
       if (response.data.success) {
         toast.success(response.data.message);
-        setImage(false);
-        setName(" ");
-        setDescription(" ");
-        setPrice(" ");
-        // setMrp(" "); // reset MRP
+        setImage1(false);
+        setImage2(false);
+        setImage3(false);
+        setImage4(false);
+        setName("");
+        setDescription("");
+        setPrice("");
+        setMrp("");
         setSizes([]);
-        setMaterial(" ");
-        setCode(" ");
-        setModel(" ");
+        setMaterial("");
+        setModel("");
         setCategory("certificate");
         setBrand(" ");
         setFeatures("");
@@ -73,16 +78,123 @@ const Add = ({ token }) => {
   return (
     <form onSubmit={onSubmitHandler} className="flex flex-col w-full items-start gap-4 p-4 rounded-lg ">
       {/* Upload Image */}
-      <div>
-        <p className="mb-2 font-semibold">Upload Image</p>
-        <label
-          htmlFor="image"
-          className="flex flex-col items-center justify-center w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition"
+    <div>
+  <p className="mb-2 text-2xl">Upload Image</p>
+  <div className="flex gap-2">
+    {/* Image 1 */}
+    <div className="relative w-20 h-20">
+      {image1 && (
+        <button
+          className="absolute top-0 right-0 bg-red-500 hover:bg-red-600 cursor-pointer text-white p-1 rounded-full"
+          onClick={(e) => {
+            e.preventDefault();
+            setImage1(false);
+          }}
         >
-          <img src={!image ? assets.upload_area : URL.createObjectURL(image)} className="w-12" alt="Upload" />
-          <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden />
-        </label>
-      </div>
+          X
+        </button>
+      )}
+      <label htmlFor="image1" className="cursor-pointer">
+        <img
+          className="w-20 h-20 object-cover border rounded"
+          src={!image1 ? assets.upload_area : URL.createObjectURL(image1)}
+          alt=""
+        />
+      </label>
+      <input
+        type="file"
+        id="image1"
+        hidden
+        onChange={(e) => setImage1(e.target.files[0])}
+      />
+    </div>
+
+    {/* Image 2 */}
+    <div className="relative w-20 h-20">
+      {image2 && (
+        <button
+          className="absolute top-0 right-0 bg-red-500 hover:bg-red-600 cursor-pointer text-white p-1 rounded-full"
+          onClick={(e) => {
+            e.preventDefault();
+            setImage2(false);
+          }}
+        >
+          X
+        </button>
+      )}
+      <label htmlFor="image2" className="cursor-pointer">
+        <img
+          className="w-20 h-20 object-cover border rounded"
+          src={!image2 ? assets.upload_area : URL.createObjectURL(image2)}
+          alt=""
+        />
+      </label>
+      <input
+        type="file"
+        id="image2"
+        hidden
+        onChange={(e) => setImage2(e.target.files[0])}
+      />
+    </div>
+
+    {/* Image 3 */}
+    <div className="relative w-20 h-20">
+      {image3 && (
+        <button
+          className="absolute top-0 right-0 bg-red-500 hover:bg-red-600 cursor-pointer text-white p-1 rounded-full"
+          onClick={(e) => {
+            e.preventDefault();
+            setImage3(false);
+          }}
+        >
+          X
+        </button>
+      )}
+      <label htmlFor="image3" className="cursor-pointer">
+        <img
+          className="w-20 h-20 object-cover border rounded"
+          src={!image3 ? assets.upload_area : URL.createObjectURL(image3)}
+          alt=""
+        />
+      </label>
+      <input
+        type="file"
+        id="image3"
+        hidden
+        onChange={(e) => setImage3(e.target.files[0])}
+      />
+    </div>
+
+    {/* Image 4 */}
+    <div className="relative w-20 h-20">
+      {image4 && (
+        <button
+          className="absolute top-0 right-0 bg-red-500 hover:bg-red-600 cursor-pointer text-white p-1 rounded-full"
+          onClick={(e) => {
+            e.preventDefault();
+            setImage4(false);
+          }}
+        >
+          X
+        </button>
+      )}
+      <label htmlFor="image4" className="cursor-pointer">
+        <img
+          className="w-20 h-20 object-cover border rounded"
+          src={!image4 ? assets.upload_area : URL.createObjectURL(image4)}
+          alt=""
+        />
+      </label>
+      <input
+        type="file"
+        id="image4"
+        hidden
+        onChange={(e) => setImage4(e.target.files[0])}
+      />
+    </div>
+  </div>
+</div>
+
 
       {/* Product Name */}
       <div className="w-full">
@@ -115,6 +227,7 @@ const Add = ({ token }) => {
             <option value="buttonfiles">Button Files</option>
             <option value="certificates">Certificates</option>
             <option value="zipfiles">Zip Files</option>
+            <option value="envelopes">Envelopes</option>
             <option value="stripfiles">Strip Files</option>
             <option value="documentbag">Document bag</option>
             <option value="clothpouches">Cloth Pouches</option>
@@ -144,7 +257,7 @@ const Add = ({ token }) => {
           />
         </div>
 
-        {/* <div className="flex-1">
+        <div className="flex-1">
           <p className="mb-1 font-semibold">Product MRP</p>
           <input
             onChange={(e) => setMrp(e.target.value)}
@@ -153,13 +266,8 @@ const Add = ({ token }) => {
             placeholder="30"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-        </div> */}
-
-          {/* product MRP */}
-        <div>
-          <p className='font-bold'>Product MRP </p>
-          <input onChange={(e) => setCode(e.target.value)} type="text" placeholder='MRP' required />
         </div>
+
 
       </div>
 
@@ -187,7 +295,7 @@ const Add = ({ token }) => {
             </div>
           ))}
         </div>
-        
+
       </div>
 
       <div className='flex flex-col md:flex-row gap-5'>
@@ -197,7 +305,7 @@ const Add = ({ token }) => {
           <input onChange={(e) => setMaterial(e.target.value)} type="text" placeholder='material' required />
         </div>
 
-      
+
         {/* model */}
         <div>
           <p className='font-bold'>Model</p>
@@ -226,9 +334,8 @@ const Add = ({ token }) => {
       <button
         type="submit"
         disabled={loading}
-        className={`w-28 py-3 px-5 rounded-2xl font-bold text-white transition ${
-          loading ? "bg-gray-500 cursor-not-allowed" : "bg-black hover:bg-gray-800"
-        }`}
+        className={`w-28 py-3 px-5 rounded-2xl font-bold text-white transition ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-black hover:bg-gray-800"
+          }`}
       >
         {loading ? "Adding..." : "Add"}
       </button>
